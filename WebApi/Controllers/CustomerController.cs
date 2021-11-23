@@ -19,7 +19,7 @@ namespace WebApi.Controllers
         [HttpGet("{id:long}")]
         public async Task<ActionResult<Customer>> GetCustomerAsync([FromRoute] long id)
         {
-            var customer = _context.Customers.FindAsync(id).Result;
+             var customer = (await _context.Customers.FindAsync(id));
             if (customer != null)
             {
                 return Ok(customer);
